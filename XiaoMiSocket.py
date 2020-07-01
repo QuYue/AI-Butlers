@@ -9,9 +9,10 @@ from miio.chuangmi_plug import ChuangmiPlug
 
 class Maid1_Commander():
     def __init__(self):
-        self.ip = '192.168.101.9'
+        self.ip = '192.168.1.101'
         # self.token = '8983016090f11f88ad81eecb82f4f20b'
-        self.token = 'dab1a009edfcbcae231bfdcb57a6fdba'
+        # self.token = 'dab1a009edfcbcae231bfdcb57a6fdba'
+        self.token = '6dbb62c0bcffe22f914b3a7c38c7744d'
         self.maid = ChuangmiPlug(ip=self.ip, token=self.token)
         
     def command1(self): # 开门
