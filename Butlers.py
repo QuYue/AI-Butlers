@@ -181,7 +181,7 @@ class Butler_WatchDog(Butler):
     def earliest(self):
         early = False
         now = time.localtime()
-        if now.tm_mday > self.lasttime.tm_mday:
+        if now.tm_mday != self.lasttime.tm_mday:
             self.early_response()
             early = True
         self.lasttime = now
@@ -222,6 +222,8 @@ class Butler_WatchDog(Butler):
                 maid1_commander = Maid1_Commander()
                 report = maid1_commander.command1()
                 reply = report
+                if self.earliest():
+                    self.early_response()
             elif content == '门的状况' or content.lower() == 'door':
                 # 小米开关的状况
                 maid1_commander = Maid1_Commander()
