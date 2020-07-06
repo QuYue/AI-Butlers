@@ -63,8 +63,8 @@ def chatting(content, user, chatterID):
     return chat_code, reply
 
 if __name__ == '__main__':
-    content = '今天天气怎么样'
+    content = '你真帅'
     user = '普通人'
-    chatterID = '6b7e920e9ec64a83a49e22adda733fb'
+    chatterID = 'c0022c9c3c134d6fb331ec14f585a89f'
     code, reply = chatting(content, user, chatterID)
     print(f"{code}, {reply}")

@@ -222,8 +222,7 @@ class Butler_WatchDog(Butler):
                 maid1_commander = Maid1_Commander()
                 report = maid1_commander.command1()
                 reply = report
-                if self.earliest():
-                    self.early_response()
+                self.earliest()
             elif content == '门的状况' or content.lower() == 'door':
                 # 小米开关的状况
                 maid1_commander = Maid1_Commander()
