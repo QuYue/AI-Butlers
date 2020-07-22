@@ -12,6 +12,7 @@ from stack import Process_Stack
 from XiaoMiSocket import Maid1_Commander
 from weather import weather
 from chatting import chatting
+from BaiduTranslate import BaiduTranslate, print_language, Tolang
 
 class Butler():
     def __init__(self, ID, name, secret, webhook):
@@ -139,6 +140,12 @@ class Butler_Alfred(Butler):
             elif content == '查看进程' or content == '进程' or content.lower() == 'process':
                 # 查看进程
                 reply = self.process_stack.statistics()
+            elif content[:2] == '翻译':
+                # 翻译
+                lang, content = Tolang(content[2:])
+                reply = BaiduTranslate(content, lang)
+            elif content == '语言列表' or content == 'language dict':
+                reply = print_language()
             # elif content == '你好' or content == '嗨' or content.lower() == 'hello' or content.lower() == 'hi':
             #     # 夸奖
             #     r = random.randint(0,2)

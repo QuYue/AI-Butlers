@@ -9,15 +9,16 @@ from miio.chuangmi_plug import ChuangmiPlug
 
 class Maid1_Commander():
     def __init__(self):
-        self.ip = '192.168.1.100'
+        self.ip = '192.168.101.9'
         # self.token = '8983016090f11f88ad81eecb82f4f20b'
         # self.token = 'dab1a009edfcbcae231bfdcb57a6fdba'
-        self.token = '6dbb62c0bcffe22f914b3a7c38c7744d'
+        # self.token = '6dbb62c0bcffe22f914b3a7c38c7744d'
+        self.token = 'e847c158151cd8488e182f8d258923d5'
         self.maid = ChuangmiPlug(ip=self.ip, token=self.token)
         
     def command1(self): # 开门
         x1 = self.maid.off()
-        time.sleep(2)
+        time.sleep(5)
         x2 = self.maid.on()
         #print(f"Open the door:{x1},{x2}")
         return f"Open the door:{x1[0]},{x2[0]}"
