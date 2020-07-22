@@ -43,15 +43,18 @@ def Tolang(content):
         elif lang in lang_dict.values():
             lang = list(lang_dict.keys())[list(lang_dict.values()).index(lang)]
             return lang, c
-        else:
-            return 'zh', content
+
+    if is_contains_chinese(c):
+        return 'en', content
     else:
-        if is_contains_chinese(c):
-            return 'en', content
-        else:
-            return 'zh', content
+        return 'zh', content
 
 def BaiduTranslate(word, toLang='zh'):
+    def out(words):
+        output = ''
+        for word in words:
+            output += word+' '
+        return output
     appid = '20200722000524169'  # 填写你的appid
     secretKey = 'XHQTaatI6j2_DCcsuaMZ'  # 填写你的密钥
 
@@ -75,7 +78,11 @@ def BaiduTranslate(word, toLang='zh'):
         response = httpClient.getresponse()
         result_all = response.read().decode("utf-8")
         result = json.loads(result_all)
-        return result['trans_result'][0]['dst']
+        result = [i['dst'] for i in result['trans_result']]
+        
+        result = out(result)
+
+        return result#['trans_result'][0]['dst']
     except Exception as e:
         print (e)
         return 'Error'
@@ -85,4 +92,16 @@ def BaiduTranslate(word, toLang='zh'):
 
 #%%
 if __name__ == "__main__":
-    print(BaiduTranslate('hello'))
+    a = BaiduTranslate("""Research and practice have demonstrated that integration of healthcare information has become essential for health informatics. Such integrated healthcare information systems are able to provide more comprehensive healthcare services than those where various information sources are disconnected. In this paper,
+we construct an integrated health information database called LipperNet, which
+consolidates heterogeneous information sources such as medical organizations,
+doctors and medical research publications, etc. in China. Then, we conduct
+some basic statistical analysis, such as checking the correlations among doctors
+from their co-authorship networks, the spatial distribution of different levels of
+hospitals, the doctor specialty distribution in different locations, etc., to show
+the big potential of this database on understanding the current status of health
+network in China. We hope this database could be an important resource to
+help advance the health informatics research in China and improve the quality
+of healthcare delivery.""")
+
+# %%

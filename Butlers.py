@@ -234,6 +234,12 @@ class Butler_WatchDog(Butler):
                 maid1_commander = Maid1_Commander()
                 report = maid1_commander.command2()
                 reply = f"Power:{report.power} | Temperature:{report.temperature}"
+            elif content[:2] == '翻译':
+                # 翻译
+                lang, content = Tolang(content[2:])
+                reply = BaiduTranslate(content, lang)
+            elif content == '语言列表' or content == 'language dict':
+                reply = print_language()
             # elif content == '你好' or content == '嗨' or content.lower() == 'hello' or content.lower() == 'hi':
             #     # 夸奖
             #     r = random.randint(0,2)
@@ -280,6 +286,12 @@ class Butler_Lucius(Butler):
                 maid1_commander = Maid1_Commander()
                 report = maid1_commander.command2()
                 reply = f"Power:{report.power} | Temperature:{report.temperature}"
+            elif content[:2] == '翻译':
+                # 翻译
+                lang, content = Tolang(content[2:])
+                reply = BaiduTranslate(content, lang)
+            elif content == '语言列表' or content == 'language dict':
+                reply = print_language()
             # elif content == '你好' or content == '嗨' or content.lower() == 'hello' or content.lower() == 'hi':
             #     # 夸奖
             #     r = random.randint(0,2)
