@@ -81,7 +81,6 @@ class Butler():
         print(info.text)
     
         
-
 class Butler_Alfred(Butler):
     def __init__(self):
         self.ID = '$:LWCP_v1:$aQhMTAtIgfqDOZ+Y6qsX1hkbm8To5fEd'

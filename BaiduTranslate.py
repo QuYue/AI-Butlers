@@ -27,6 +27,11 @@ def print_language():
     
 
 def Tolang(content):
+    def is_contains_chinese(strs):
+        for char in strs:
+            if '\u4e00' <= char <= '\u9fa5':
+                return True
+        return False
     content = content.strip()
     c = content
     if c[0] == '-':
@@ -41,7 +46,10 @@ def Tolang(content):
         else:
             return 'zh', content
     else:
-        return 'zh', content
+        if is_contains_chinese(c):
+            return 'en', content
+        else:
+            return 'zh', content
 
 def BaiduTranslate(word, toLang='zh'):
     appid = '20200722000524169'  # 填写你的appid
